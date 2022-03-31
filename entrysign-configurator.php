@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Entrysign Configurator
  * Plugin URI:        https://squarewavedigital.co.uk/
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Entrysign Configurator
  * Version:           1.0.0
  * Author:            Paul Ryder
  * Author URI:        https://squarewavedigital.co.uk/
@@ -80,3 +80,12 @@ function run_entrysign_configurator() {
 
 }
 run_entrysign_configurator();
+
+function shortcode_handler_function(){
+	echo('<div id="entrysign-app"></div>');
+}
+
+function shortcodes_init(){
+	add_shortcode( 'shortcode_test', 'shortcode_handler_function' );
+   }
+   add_action('init', 'shortcodes_init');

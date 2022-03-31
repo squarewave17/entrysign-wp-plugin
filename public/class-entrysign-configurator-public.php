@@ -73,7 +73,8 @@ class Entrysign_Configurator_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/entrysign-configurator-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'vue-css', plugin_dir_url( __FILE__ ) . '/configurator/dist/css/app.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'vue-css-vendor', plugin_dir_url( __FILE__ ) . '/configurator/dist/css/chunk-vendors.css', array(), $this->version, 'all' );
 
 	}
 
@@ -96,7 +97,8 @@ class Entrysign_Configurator_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/entrysign-configurator-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( 'vue-vendors', plugin_dir_url( __FILE__ ) . '/configurator/dist/js/chunk-vendors.js', [], $this->version, true );
+		wp_enqueue_script( 'vue-js', plugin_dir_url( __FILE__ ) . '/configurator/dist/js/app.js', [], $this->version, true );
 
 	}
 
