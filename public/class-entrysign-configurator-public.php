@@ -11,11 +11,6 @@
  */
 
 /**
- * The public-facing functionality of the plugin.
- *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the public-facing stylesheet and JavaScript.
- *
  * @package    Entrysign_Configurator
  * @subpackage Entrysign_Configurator/public
  * @author     Paul Ryder <paul@squarewavedigital.co.uk>
@@ -32,8 +27,6 @@ class Entrysign_Configurator_Public {
 	private $plugin_name;
 
 	/**
-	 * The version of this plugin.
-	 *
 	 * @since    1.0.0
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
@@ -62,8 +55,6 @@ class Entrysign_Configurator_Public {
 	public function enqueue_styles() {
 
 		/**
-		 * This function is provided for demonstration purposes only.
-		 *
 		 * An instance of this class should be passed to the run() function
 		 * defined in Entrysign_Configurator_Loader as all of the hooks are defined
 		 * in that particular class.
@@ -73,6 +64,12 @@ class Entrysign_Configurator_Public {
 		 * class.
 		 */
 
+		 /**
+		  * Only run vue when on the desired page
+		  */
+		if (!is_page('app-test')){
+			return;
+		}
 		wp_enqueue_style( 'vue-css', plugin_dir_url( __FILE__ ) . '/configurator/dist/css/app.css', array(), $this->version, 'all' );
 		wp_enqueue_style( 'vue-css-vendor', plugin_dir_url( __FILE__ ) . '/configurator/dist/css/chunk-vendors.css', array(), $this->version, 'all' );
 
@@ -86,17 +83,17 @@ class Entrysign_Configurator_Public {
 	public function enqueue_scripts() {
 
 		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Entrysign_Configurator_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
 		 * The Entrysign_Configurator_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
+		 /**
+		  * Only run vue when on the desired page
+		  */
+		if (!is_page('app-test')){
+			return;
+		}
 		wp_enqueue_script( 'vue-vendors', plugin_dir_url( __FILE__ ) . '/configurator/dist/js/chunk-vendors.js', [], $this->version, true );
 		wp_enqueue_script( 'vue-js', plugin_dir_url( __FILE__ ) . '/configurator/dist/js/app.js', [], $this->version, true );
 

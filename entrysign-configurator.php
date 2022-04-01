@@ -1,12 +1,6 @@
 <?php
 
 /**
- * The plugin bootstrap file
- *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
  *
  * @link              https://squarewavedigital.co.uk/
  * @since             1.0.0
@@ -32,8 +26,6 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
  */
 define( 'ENTRYSIGN_CONFIGURATOR_VERSION', '1.0.0' );
 
@@ -81,6 +73,12 @@ function run_entrysign_configurator() {
 }
 run_entrysign_configurator();
 
+
+/**
+ * TEMPORARY
+ * 
+ * Shorcode handler used for testing Vue connection
+ */
 function shortcode_handler_function(){
 	echo('<div id="entrysign-app"></div>');
 }
@@ -89,3 +87,5 @@ function shortcodes_init(){
 	add_shortcode( 'shortcode_test', 'shortcode_handler_function' );
    }
    add_action('init', 'shortcodes_init');
+
+  

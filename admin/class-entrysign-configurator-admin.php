@@ -11,8 +11,6 @@
  */
 
 /**
- * The admin-specific functionality of the plugin.
- *
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
@@ -62,8 +60,6 @@ class Entrysign_Configurator_Admin {
 	public function enqueue_styles() {
 
 		/**
-		 * This function is provided for demonstration purposes only.
-		 *
 		 * An instance of this class should be passed to the run() function
 		 * defined in Entrysign_Configurator_Loader as all of the hooks are defined
 		 * in that particular class.
@@ -85,8 +81,6 @@ class Entrysign_Configurator_Admin {
 	public function enqueue_scripts() {
 
 		/**
-		 * This function is provided for demonstration purposes only.
-		 *
 		 * An instance of this class should be passed to the run() function
 		 * defined in Entrysign_Configurator_Loader as all of the hooks are defined
 		 * in that particular class.
