@@ -2,8 +2,7 @@ const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
   filenameHashing: false,
-  publicPath:
-    '/wp-content/plugins/entrysign-configurator/public/configurator/dist/',
+  publicPath: '/wp-content/plugins/entrysign-configurator/admin/app/dist/',
   chainWebpack: (config) => {
     config.plugins.delete('html')
     config.plugins.delete('preload')

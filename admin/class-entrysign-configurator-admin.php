@@ -18,7 +18,8 @@
  * @subpackage Entrysign_Configurator/admin
  * @author     Paul Ryder <paul@squarewavedigital.co.uk>
  */
-class Entrysign_Configurator_Admin {
+class Entrysign_Configurator_Admin
+{
 
 	/**
 	 * The ID of this plugin.
@@ -45,11 +46,11 @@ class Entrysign_Configurator_Admin {
 	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct($plugin_name, $version)
+	{
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
 	}
 
 	/**
@@ -57,7 +58,8 @@ class Entrysign_Configurator_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles($hook)
+	{
 
 		/**
 		 * An instance of this class should be passed to the run() function
@@ -68,9 +70,16 @@ class Entrysign_Configurator_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
+		/**
+		 * Only run vue when on the desired page
+		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/entrysign-configurator-admin.css', array(), $this->version, 'all' );
+		if ($hook !== 'toplevel_page_entrysign') {
+			return;
+		}
 
+		wp_enqueue_style('vue-css', plugin_dir_url(__FILE__) . '/app/dist/css/app.css', array(), $this->version, 'all');
+		wp_enqueue_style('vue-css-vendor', plugin_dir_url(__FILE__) . '/app/dist/css/chunk-vendors.css', array(), $this->version, 'all');
 	}
 
 	/**
@@ -78,7 +87,8 @@ class Entrysign_Configurator_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts($hook)
+	{
 
 		/**
 		 * An instance of this class should be passed to the run() function
@@ -89,9 +99,13 @@ class Entrysign_Configurator_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/entrysign-configurator-admin.js', array( 'jquery' ), $this->version, false );
-
+		/**
+		 * Only run vue when on the desired page
+		 */
+		if ($hook !== 'toplevel_page_entrysign') {
+			return;
+		}
+		wp_enqueue_script('vue-vendors', plugin_dir_url(__FILE__) . '/app/dist/js/chunk-vendors.js', [], $this->version, true);
+		wp_enqueue_script('vue-js', plugin_dir_url(__FILE__) . '/app/dist/js/app.js', [], $this->version, true);
 	}
-
 }
